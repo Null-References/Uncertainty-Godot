@@ -1,0 +1,13 @@
+#Private repo
+Uncertainty/git/
+Uncertainty/textures/
+Uncertainty/models/
+Uncertainty/prefabs/
+Uncertainty/levels/
+
+# System/tool-specific ignores
+.directory
+.DS_Store
+*~
+*.blend1
+*.sh
