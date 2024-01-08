@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://boi8vj58rw8de"]
+
+[ext_resource type="Script" path="res://src/controller/ShipMovement.cs" id="1_tpwav"]
+[ext_resource type="Script" path="res://src/controller/CameraArm.cs" id="3_jwn6q"]
+[ext_resource type="Script" path="res://src/controller/ControllerContext.cs" id="3_u1tel"]
+[ext_resource type="Script" path="res://src/controller/ShipPhysicsController.cs" id="4_h0lou"]
+[ext_resource type="Script" path="res://src/controller/ShipCameraController.cs" id="5_027e8"]
+[ext_resource type="Script" path="res://src/input/InputHandler.cs" id="5_hg033"]
+[ext_resource type="PackedScene" uid="uid://dp3mfwlcpd8ov" path="res://free_assets/Spaceship.fbx" id="7_0uo55"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s1iup"]
+size = Vector3(0.460693, 0.400513, 2.66394)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pjhd2"]
+size = Vector3(2.95508, 0.297852, 0.666016)
+
+[sub_resource type="Curve" id="Curve_ep86i"]
+_data = [Vector2(0, 0), 0.0, 2.26441, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_so453"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="ship" type="RigidBody3D" node_paths=PackedStringArray("shipModel", "controllerContext")]
+gravity_scale = 0.0
+linear_damp = 2.0
+angular_damp = 1.0
+script = ExtResource("1_tpwav")
+shipModel = NodePath("CollisionShape3D")
+moveSpeed = 10.0
+rotateSpeed = 5.0
+controllerContext = NodePath("Controllers")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0214233, -0.831972)
+shape = SubResource("BoxShape3D_s1iup")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0325623)
+shape = SubResource("BoxShape3D_pjhd2")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." node_paths=PackedStringArray("parent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.435819)
+collision_mask = 0
+spring_length = 3.0
+script = ExtResource("3_jwn6q")
+parent = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+
+[node name="Controllers" type="Node" parent="." node_paths=PackedStringArray("controllers", "input")]
+script = ExtResource("3_u1tel")
+controllers = [NodePath("CameraBasedMovement"), NodePath("PhysicalMovement")]
+input = NodePath("Input")
+
+[node name="CameraBasedMovement" type="Node" parent="Controllers" node_paths=PackedStringArray("camera")]
+script = ExtResource("5_027e8")
+camera = NodePath("../../SpringArm3D")
+curve = SubResource("Curve_ep86i")
+turnSpeed = 3.0
+
+[node name="PhysicalMovement" type="Node" parent="Controllers"]
+script = ExtResource("4_h0lou")
+
+[node name="Input" type="Node" parent="Controllers"]
+script = ExtResource("5_hg033")
+curve = SubResource("Curve_so453")
+
+[node name="Root Scene" parent="." instance=ExtResource("7_0uo55")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[connection signal="ChangeController" from="Controllers/Input" to="Controllers" method="SwitchController"]

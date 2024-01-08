@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://1tnte6aqtr1h"]
+
+[resource]
+resource_name = "ship metal"
+albedo_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+metallic = 0.4
+roughness = 0.1
+anisotropy = 0.79

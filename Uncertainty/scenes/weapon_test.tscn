@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://ci1mtif53rjvo"]
+
+[ext_resource type="Script" path="res://src/shooting/Blaster.cs" id="1_rh45x"]
+[ext_resource type="Script" path="res://src/shooting/BulletPool.cs" id="2_kuyox"]
+[ext_resource type="PackedScene" uid="uid://dlovcvbuc7ww5" path="res://scenes/bullet.tscn" id="3_m8t22"]
+[ext_resource type="PackedScene" uid="uid://boi8vj58rw8de" path="res://scenes/ship.tscn" id="4_rt0nk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7cxdu"]
+sky_top_color = Color(0.619608, 0.368627, 0.368627, 1)
+sky_horizon_color = Color(0.697059, 0.634314, 0.701961, 1)
+ground_bottom_color = Color(0.168627, 0.168627, 0.439216, 1)
+ground_horizon_color = Color(0.697059, 0.634314, 0.701961, 1)
+
+[sub_resource type="Sky" id="Sky_n6msg"]
+sky_material = SubResource("ProceduralSkyMaterial_7cxdu")
+
+[sub_resource type="Environment" id="Environment_vn6pu"]
+background_mode = 2
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_n6msg")
+tonemap_mode = 2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3w30k"]
+
+[node name="WeaponTest" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vn6pu")
+
+[node name="pool" type="Node" parent="."]
+script = ExtResource("2_kuyox")
+obj = ExtResource("3_m8t22")
+
+[node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("1_rh45x")
+target = NodePath("../ship")
+fireRate = 1.0
+damage = 1.0
+speed = 80.0
+lifeTime = 3.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Weapon"]
+mesh = SubResource("CapsuleMesh_3w30k")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Weapon"]
+transform = Transform3D(0.605914, 0, 0, 0, -0.0287273, -0.504699, 0, 0.546689, -0.0265208, 0, 0, -0.267334)
+mesh = SubResource("CapsuleMesh_3w30k")
+skeleton = NodePath("../..")
+
+[node name="ship" parent="." instance=ExtResource("4_rt0nk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0956726, 0, 3.89502)

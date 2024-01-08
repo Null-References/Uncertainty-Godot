@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bighmyuft7ljk"]
+
+[resource]
+resource_name = "ship diff"
+albedo_color = Color(0.576471, 0, 0.0745098, 1)
+metallic = 0.4
+roughness = 0.272166
