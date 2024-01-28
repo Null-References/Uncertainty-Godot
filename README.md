@@ -74,8 +74,8 @@ we plan to develop a space shooter action-packed adventure game based on boss fi
 
 ## Project Documentation:  
 
-### Project Design:
-- Soon will be added
+### Project Analysis and Design:
+- Class Diagram: [Link](Documentation/)
 
 <!-- LICENSE -->
 ## License
