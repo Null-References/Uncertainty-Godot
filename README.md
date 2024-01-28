@@ -51,7 +51,13 @@
 Uncertainty is a 3D game developed in Godot4.2,  
 we plan to develop a space shooter action-packed adventure game based on boss fight mechanics and a bit of a story.  
 
-### Plugins Used  
+### Addons Used  
+- [Jolt](https://github.com/godot-jolt/godot-jolt)
+- [Proton Scatter](https://github.com/HungryProton/scatter)
+    + in case u are using `gl_compatibility` u have to fix shader errors manually
+- [Phantom Camera](https://github.com/ramokz/phantom-camera)
+- [Debug Draw 3D](https://github.com/DmitriySalnikov/godot_debug_draw_3d)
+
 
 
 ### Built With
@@ -83,7 +89,8 @@ we plan to develop a space shooter action-packed adventure game based on boss fi
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
-
+### Used assets:
+- [Low Poly Rocks](https://skfb.ly/oqJnM)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
