@@ -8,6 +8,7 @@
 size = Vector3(0.300537, 0.31543, 2.2041)
 
 [node name="Area3D" type="Area3D"]
+monitorable = false
 script = ExtResource("1_7sujm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

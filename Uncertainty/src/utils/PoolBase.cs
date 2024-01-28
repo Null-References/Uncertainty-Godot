@@ -3,11 +3,6 @@ using Godot;
 
 namespace Utils
 {
-    public interface IPoolObject
-    {
-        void Enable();
-        void Disable();
-    }
     public abstract partial class PoolBase<T> : Node where T : class,IPoolObject
     {
         [Export] private PackedScene obj { set; get; }

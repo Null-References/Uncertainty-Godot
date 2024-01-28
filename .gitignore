@@ -1,9 +1,21 @@
-#Private repo
+#Git
 Uncertainty/git/
-Uncertainty/textures/
-Uncertainty/models/
-Uncertainty/prefabs/
-Uncertainty/levels/
+
+#Private repo
+Uncertainty/levels/*
+!Uncertainty/levels/free/
+
+Uncertainty/materials/*
+!Uncertainty/materials/free/
+
+Uncertainty/models/*
+!Uncertainty/models/free/
+
+Uncertainty/prefabs/*
+!Uncertainty/prefabs/free/
+
+Uncertainty/textures/*
+!Uncertainty/textures/free/
 
 # System/tool-specific ignores
 .directory

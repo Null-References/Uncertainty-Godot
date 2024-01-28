@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dp3mfwlcpd8ov"
-path="res://.godot/imported/Spaceship.fbx-84a1fdd25e9d06302b79ea8f3761b71e.scn"
+path="res://.godot/imported/Spaceship.fbx-c8625d22cc4f02d4df0e0238749711fc.scn"
 
 [deps]
 
-source_file="res://free_assets/Spaceship.fbx"
-dest_files=["res://.godot/imported/Spaceship.fbx-84a1fdd25e9d06302b79ea8f3761b71e.scn"]
+source_file="res://models/free/Spaceship.fbx"
+dest_files=["res://.godot/imported/Spaceship.fbx-c8625d22cc4f02d4df0e0238749711fc.scn"]
 
 [params]
 

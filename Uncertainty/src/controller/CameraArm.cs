@@ -3,6 +3,7 @@ using Godot;
 public partial class CameraArm : SpringArm3D
 {
 
+	[Export] float fallBehind = 0.1f;
 	[Export] float mouseSpeed = 0.1f;
 	[Export] Node3D parent;
 
@@ -10,15 +11,21 @@ public partial class CameraArm : SpringArm3D
 
 	public void SetMouseCaptured(bool captured)
 	{
-		TopLevel = captured;
+		TopLevel = true;
 		Input.MouseMode = captured ? Input.MouseModeEnum.Captured : Input.MouseModeEnum.Visible;
 		_captured = captured;
 	}
 
 	public override void _Process(double delta)
 	{
-		if (_captured)
-			Position = parent.Position;
+		Vector3 pos = Position;
+		pos = pos.Lerp(parent.Position, fallBehind);
+		Position = pos;
+		if (!_captured)
+		{
+			Rotation = parent.Rotation;
+		}
+
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

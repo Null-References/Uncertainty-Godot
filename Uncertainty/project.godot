@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Uncertainty"
-run/main_scene="res://scenes/playground.tscn"
+run/main_scene="res://levels/free/playground.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,17 +24,19 @@ window/size/viewport_height=600
 
 project/assembly_name="Uncertainty"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/proton_scatter/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
 "res://addons/": "gray",
 "res://docs/": "blue",
-"res://free_assets/": "teal",
 "res://levels/": "pink",
 "res://materials/": "orange",
 "res://models/": "yellow",
 "res://prefabs/": "green",
-"res://scenes/": "teal",
 "res://src/": "purple",
 "res://textures/": "red"
 }
@@ -89,6 +91,11 @@ switch_controls={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="player"
+3d_physics/layer_2="enemy"
 
 [physics]
 

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://src/shooting/Blaster.cs" id="1_rh45x"]
 [ext_resource type="Script" path="res://src/shooting/BulletPool.cs" id="2_kuyox"]
-[ext_resource type="PackedScene" uid="uid://dlovcvbuc7ww5" path="res://scenes/bullet.tscn" id="3_m8t22"]
-[ext_resource type="PackedScene" uid="uid://boi8vj58rw8de" path="res://scenes/ship.tscn" id="4_rt0nk"]
+[ext_resource type="PackedScene" uid="uid://dlovcvbuc7ww5" path="res://levels/free/bullet.tscn" id="3_m8t22"]
+[ext_resource type="PackedScene" uid="uid://boi8vj58rw8de" path="res://levels/free/ship.tscn" id="4_rt0nk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7cxdu"]
 sky_top_color = Color(0.619608, 0.368627, 0.368627, 1)

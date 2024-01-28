@@ -1,4 +1,5 @@
 using Godot;
+using HealthSystem;
 using Timer;
 using Utils;
 namespace Shooting
@@ -10,13 +11,20 @@ namespace Shooting
         RepeatableTimer _timer = new RepeatableTimer(1);
         public void Disable()
         {
+            AreaEntered -= OnAreaEntered;
         }
 
         public void Enable()
         {
+            AreaEntered += OnAreaEntered;
         }
 
-        public void SetProperties(float speed, float damage,float lifeTime,Vector3 posision,Quaternion rotation)
+        private void OnAreaEntered(Area3D other)
+        {
+            IDamagable damagable = other as IDamagable;
+            damagable?.TakeDamage(_damage);
+        }
+        public void SetProperties(float speed, float damage, float lifeTime, Vector3 posision, Quaternion rotation)
         {
             _speed = speed;
             _damage = damage;
@@ -26,12 +34,13 @@ namespace Shooting
         }
         public override void _PhysicsProcess(double delta)
         {
-            Position += -Basis.Z *_speed* (float)delta;
+            Position += -Basis.Z * _speed * (float)delta;
         }
         public override void _Process(double delta)
         {
             _timer.Tick((float)delta);
-            if(_timer.IsReady()){
+            if (_timer.IsReady())
+            {
                 BulletPool.Instance.ReturnToPool(this);
             }
         }
